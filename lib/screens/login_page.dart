@@ -1,7 +1,8 @@
-import 'package:currency_converter/screens/currency_conversion_page';
+import 'package:currency_converter/screens/currency_conversion_page.dart';
 import 'package:currency_converter/services/exchange_rate_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'selection_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -36,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const CurrencyConverterPage(),
+            builder: (context) => const SelectionPage(),
           ),
         );
         // Navigate to the main page or currency converter screen
