@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1027492470708",
+    "project_id": "currency-converter-login-6fd2b",
+    "storage_bucket": "currency-converter-login-6fd2b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027492470708:android:013772f84f1b405eff5ce1",
+        "android_client_info": {
+          "package_name": "com.example.test_db"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtYNa0esCHeTo7AQtM9cPTXCF6RxXDhZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027492470708:android:691a25e71eff54c2ff5ce1",
+        "android_client_info": {
+          "package_name": "com.google.firebase.presents.currency_converter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtYNa0esCHeTo7AQtM9cPTXCF6RxXDhZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
