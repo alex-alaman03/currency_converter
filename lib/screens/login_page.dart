@@ -1,4 +1,4 @@
-import 'package:currency_converter/screens/currency_conversion_page.dart';
+import 'package:currency_converter/services/crypto_data_service.dart';
 import 'package:currency_converter/services/exchange_rate_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,12 +12,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final CryptoDataHelper _cryptoDataHelper = CryptoDataHelper();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String? _errorMessage;
 
   Future<void> _login() async {
+    _cryptoDataHelper.fetchAndStoreCryptoRates();
+
     try {
       final UserCredential userCredential =
           await _auth.signInWithEmailAndPassword(

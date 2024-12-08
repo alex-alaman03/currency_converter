@@ -37,9 +37,10 @@ class ExchangeRateService {
               'rate_to_usd': rates[currency],
             });
             print("Added exchange rate for $currency.");
-          } else {
-            print("Exchange rate for $currency already exists. Skipping.");
           }
+          // } else {
+          //   print("Exchange rate for $currency already exists. Skipping.");
+          // }
         }
       } else {
         print("Error: ${data['result']}");

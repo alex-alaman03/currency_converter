@@ -66,6 +66,7 @@ flutter:
   assets:
      - lib/assets/crypto_background.jpg
      - lib/assets/currency_page_background.png
+     - lib/assets/currency.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

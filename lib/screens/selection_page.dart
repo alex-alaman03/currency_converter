@@ -3,7 +3,7 @@ import 'currency_conversion_page.dart';
 import 'crypto_currency_conversion_page.dart';
 
 class SelectionPage extends StatelessWidget {
-  const SelectionPage({Key? key}) : super(key: key);
+  const SelectionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,8 @@ class SelectionPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const CryptoCurrencyConverterPage(), // Updated to use the new page
+                    builder: (context) =>
+                        const CryptoCurrencyConverterPage(), // Updated to use the new page
                   ),
                 );
               },

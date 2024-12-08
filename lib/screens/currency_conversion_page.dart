@@ -24,7 +24,8 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
   }
 
   Future<void> _loadExchangeRates() async {
-    final snapshot = await FirebaseFirestore.instance.collection('exchange_rates').get();
+    final snapshot =
+        await FirebaseFirestore.instance.collection('exchange_rates').get();
 
     if (snapshot.docs.isNotEmpty) {
       setState(() {
@@ -41,7 +42,9 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
   }
 
   void _calculateConversion() {
-    if (fromCurrency != null && toCurrency != null && exchangeRates.isNotEmpty) {
+    if (fromCurrency != null &&
+        toCurrency != null &&
+        exchangeRates.isNotEmpty) {
       final fromRate = exchangeRates[fromCurrency!]!;
       final toRate = exchangeRates[toCurrency!]!;
       setState(() {
@@ -57,11 +60,13 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
         title: const Text('Currency Converter'),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
+          color: Color.fromRGBO(255, 255, 255, 1),
           image: DecorationImage(
-            image: AssetImage('lib/assets/currency_page_background.png'), // Ensure the file path is correct
-            fit: BoxFit.cover,
-          ),
+              image: AssetImage(
+                  'lib/assets/currency.png'), // Ensure the file path is correct
+              fit: BoxFit.fitWidth,
+              alignment: AlignmentDirectional.bottomStart),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -99,7 +104,7 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
                       value: currency,
                       child: Text(currency),
                     );
-                  }).toList(),
+                  }),
                   const DropdownMenuItem<String>(
                     value: null,
                     child: Text('--- Other Currencies ---'),
@@ -111,7 +116,7 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
                       value: currency,
                       child: Text(currency),
                     );
-                  }).toList(),
+                  }),
                 ],
                 hint: const Text('Select From Currency'),
               ),
@@ -134,7 +139,7 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
                       value: currency,
                       child: Text(currency),
                     );
-                  }).toList(),
+                  }),
                   const DropdownMenuItem<String>(
                     value: null,
                     child: Text('--- Other Currencies ---'),
@@ -146,7 +151,7 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
                       value: currency,
                       child: Text(currency),
                     );
-                  }).toList(),
+                  }),
                 ],
                 hint: const Text('Select To Currency'),
               ),
@@ -154,7 +159,8 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
               if (convertedAmount != 0.0)
                 Text(
                   'Converted Amount: ${convertedAmount.toStringAsFixed(2)} $toCurrency',
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
             ],
           ),
