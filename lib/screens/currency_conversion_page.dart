@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class CurrencyConverterPage extends StatefulWidget {
   const CurrencyConverterPage({super.key});
@@ -13,7 +16,7 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
   String? fromCurrency = 'USD';
   String? toCurrency = 'EUR';
   double amount = 1.0;
-  double convertedAmount = 0.0;
+  List convertedAmount = [];
 
   final List<String> mostUsedCurrencies = ['EUR', 'USD', 'GBP', 'AUD', 'CAD'];
 
@@ -41,14 +44,18 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
     }
   }
 
-  void _calculateConversion() {
+  void _calculateConversion() async {
+    final response = await http.get(
+      Uri.parse('http://10.0.2.2:8000/get_data/get_vehicles'),
+    );
+    var decode = jsonDecode(response.body);
     if (fromCurrency != null &&
         toCurrency != null &&
         exchangeRates.isNotEmpty) {
       final fromRate = exchangeRates[fromCurrency!]!;
       final toRate = exchangeRates[toCurrency!]!;
       setState(() {
-        convertedAmount = (amount / fromRate) * toRate;
+        convertedAmount = decode;
       });
     }
   }
@@ -158,10 +165,10 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
               const SizedBox(height: 16),
               if (convertedAmount != 0.0)
                 Text(
-                  'Converted Amount: ${convertedAmount.toStringAsFixed(2)} $toCurrency',
+                  'Converted Amount: $convertedAmount',
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+                )
             ],
           ),
         ),
